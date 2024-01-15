@@ -1,10 +1,29 @@
 "use client"; // for nextjs 13.4 users
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AheadLogo from "../../../public/Images/AheadLogo.jpg"
 import Image from "next/image";
 
 const Navbar = () => {
+const [annoucementData, setAnnoucementData] = useState([]);
+
+useEffect(() => {
+  getAnnouncements();
+}, []);
+
+const getAnnouncements = async () => {
+  try {
+    const {data} = await axios.get("http://localhost:5000/announcements/");
+    
+    setAnnoucementData(data.annoucement);
+    
+   
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const toggleMobileMenu = () => {
@@ -16,7 +35,9 @@ const Navbar = () => {
         { href: "/", label: "Home" },
         { href: "/education", label: "Education" },
         { href: "/sports", label: "Sports" },
+        { href: "/announcements", label: "Announcements" },
         { href: "/contact", label: "Contact Us" },
+        
       ];
 
 

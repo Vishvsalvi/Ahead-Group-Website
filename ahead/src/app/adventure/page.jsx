@@ -1,8 +1,12 @@
 "use client";
 import React from "react";
 import dynamic from "next/dynamic";
-
-
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 import Advent1 from "../../../public/Images/AdventureSportAndCamps/Advent_1.jpg";
 import Image from "next/image";
@@ -18,8 +22,7 @@ import Advent11 from "../../../public/Images/AdventureSportAndCamps/Advent_11.jp
 import Advent8 from "../../../public/Images/AdventureSportAndCamps/Advent_8.jpg";
 
 export default function Adventure() {
-
-  const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
+  const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
   const imagesForFeatures = [
     {
@@ -90,6 +93,7 @@ export default function Adventure() {
 
   return (
     <div className="bg-[#fffff2] pt-12">
+      {/* Hero section */}
       <section>
         <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
@@ -107,8 +111,8 @@ export default function Adventure() {
               </h2>
 
               <p className="mt-4 text-[#02111b]">
-                More than just camps, we're a family of adventure enthusiasts.
-                Share campfire stories, push each other's limits, and create
+                More than just camps, we are a family of adventure enthusiasts.
+                Share campfire stories, push each others limits, and create
                 bonds that last a lifetime. Our inclusive community welcomes
                 all, from seasoned adventurers to wide-eyed beginners. Find your
                 tribe, find your next adventure.Build lifelong friendships,
@@ -120,6 +124,7 @@ export default function Adventure() {
         </div>
       </section>
 
+      {/* Features */}
       <section className="body-font pt-10">
         <div className="container px-5 py-24 mx-auto">
           <h1 className="sm:text-3xl text-2xl font-bold title-font text-center text-[#BA274A] mb-20">
@@ -138,7 +143,9 @@ export default function Adventure() {
                     <h2 className="text-[#BA274A] text-lg title-font font-semibold mb-2">
                       {title}
                     </h2>
-                    <p className="leading-relaxed text-base text-[#02111b]">{description}</p>
+                    <p className="leading-relaxed text-base text-[#02111b]">
+                      {description}
+                    </p>
                   </div>
                 </div>
               );
@@ -147,6 +154,7 @@ export default function Adventure() {
         </div>
       </section>
 
+            {/* Picture Gallery */}
       <section className="m-10">
         <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
@@ -172,6 +180,8 @@ export default function Adventure() {
           <div></div>
         </div>
       </section>
+      
+      {/* Video section */}
 
       <section className="m-10 bg-[#fffff2]">
         <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
@@ -185,7 +195,6 @@ export default function Adventure() {
         <hr />
 
         <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-           
           {/* USE TAGLINE */}
           {videoLinks.map((video, index) => {
             const { url } = video;
@@ -198,12 +207,19 @@ export default function Adventure() {
                   className="w-full h-80 rounded-sm cursor-pointer object-cover "
                   url={url}
                 />
-              
               </div>
             );
           })}
         </div>
       </section>
+
+      {/* Question and Answer */}
+
+<div className="container text-center text-2xl font-semibold mt-[8em]">
+
+      <p>Contact us for additional details about the upcoming trips</p>
+</div>
+
     </div>
   );
 }

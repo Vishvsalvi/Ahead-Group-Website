@@ -1,5 +1,7 @@
 "use client"
-import React, { useState } from "react";
+import { useState } from "react";
+import { toast } from "sonner"
+import axios from "axios";
 
 export default function Page() {
 
@@ -8,15 +10,29 @@ export default function Page() {
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
 
+  const api = "https://ahead-backend.onrender.com/announcements/email/send";
+
+async function handleSubmit(e) {
   
-  function handleSubmit(e) {
-    e.preventDefault();
-    // Checl if all fields are filled
-    if (!name || !email || !phone || !message) {
-      alert("Please fill all fields");
-      return;
+  try {
+      e.preventDefault();
+      const data = await axios.post(api, {name, email, phone, message})
+      setName(" ");
+      setEmail(" ");
+      setPhone(" ");
+      setMessage(" ");
+      toast("Enquiry sent successfully");
+      
+    } catch (error) {
+      toast("Something went wrong")
+      setName("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
+      
     }
-    console.log(name, email, phone, message);
+
+   
   }
 
 
@@ -24,7 +40,7 @@ export default function Page() {
     <div>
     
    
-      <section className=  " bg-[#fffff2] text-gray-600 body-font relative mt-16">
+    <section className=  " bg-[#fffff2] text-gray-600 body-font relative mt-16">
   <div className="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
     <div className="lg:w-2/3 md:w-1/2  rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
     <iframe
@@ -43,14 +59,13 @@ export default function Page() {
                   Virar (W), Thane, Maharashtra, India-401303</p>
         </div>
         <div className="lg:w-1/2 px-6 mt-4 lg:mt-0">
-          {/* <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs">EMAIL</h2>
-          <a className="text-indigo-500 leading-relaxed">example@email.com</a> */}
+          
           <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">PHONE</h2>
-          <p className="leading-relaxed">Add phone number</p>
+          <p className="leading-relaxed">8208231913</p>
         </div>
       </div>
     </div>
-    <div className="rounded-lg bg-white p-8 shadow-md lg:col-span-3 lg:p-12">
+    <div className="rounded-lg bg-white p-8 shadow-md lg:col-span-3 lg:p-12 mt-12 w-full md:w-auto sm:w-full">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label className="sr-only" htmlFor="name">
@@ -115,6 +130,7 @@ export default function Page() {
 
                 <div className="mt-4">
                   <button
+                    
                     type="submit"
                     className="relative px-5 py-3 overflow-hidden font-medium text-gray-800 bg-gray-100 border border-gray-100 rounded-lg shadow-inner group"
                   >

@@ -14,6 +14,7 @@ import Teacher from "../../../public/Images/Icons/teacher.png";
 import Camping from "../../../public/Images/Icons/camping.png";
 import Flags from "../../../public/Images/Icons/flags.png";
 
+import hero from "../../../public/Images/Preschool/Hero.webp"
 export default function Education() {
   const images = [
     {
@@ -103,14 +104,16 @@ export default function Education() {
           </div>
         </div>
 
-        <img
+        <Image
+          width={500}
+          height={500}
           alt="Student"
-          src="https://media.istockphoto.com/id/670712598/photo/back-view-of-schoolboy-raising-hand-to-answer-the-question.webp?b=1&s=170667a&w=0&k=20&c=_pcLzgYVFgrPFpTZ1uXYDropqxwqrRD1EFv_lSHM1go="
+          src={hero}
           className="h-56 w-full object-cover sm:h-full"
         />
       </section>
 
-      <section className="text-gray-600 body-font">
+      <section className="body-font">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-col text-center w-full mb-20">
             <h1 className="sm:text-3xl text-2xl font-bold title-font mb-4 text-[#BA274A]">
@@ -162,7 +165,7 @@ export default function Education() {
         </div>
       </section>
 
-      <section className="m-10">
+      <section className="mt-10 mx-10 bg-[#FFFFF2]">
         <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-3xl font-bold text-[#BA274A] sm:text-4xl">
@@ -173,9 +176,9 @@ export default function Education() {
 
         <hr />
 
-        <div className="mt-10 grid  grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {images.map((image) => (
-            <div>
+        <div className="mx-10 grid  grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 bg-[#FFFFF2]">
+          {images.map((image, index) => (
+            <div key={index} className="bg-[#FFFFF2] " >
               <Image
                 className="rounded-sm hover:scale-110 transition duration-500 cursor-pointer object-cover"
                 src={image.src}

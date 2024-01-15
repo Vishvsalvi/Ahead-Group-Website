@@ -2,13 +2,13 @@
 export default function Loading() {
   return (
     <div
-    className='w-screen h-screen flex justify-center items-center'
+    className='w-screen h-screen flex justify-center items-center bg-[#fffff2]'
     >
-   <div className="flex items-center justify-center space-x-2">
-	<div className="w-4 h-4 rounded-full animate-pulse dark:bg-blue-400"></div>
-	<div className="w-4 h-4 rounded-full animate-pulse dark:bg-blue-400"></div>
-	<div className="w-4 h-4 rounded-full animate-pulse dark:bg-blue-400"></div>
+   
+   <div className="loader border-gray-300 h-20 w-20 animate-spin rounded-full border-8 border-t-blue-600">
+  
 </div>
+
     </div>
   )
 }
